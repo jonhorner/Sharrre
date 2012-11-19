@@ -13,105 +13,105 @@
   defaults = {
     className: 'sharrre',
     share: {
-      googlePlus: false,
-      facebook: false,
-      twitter: false,
-      digg: false,
-      delicious: false,
-      stumbleupon: false,
-      linkedin: false,
-      pinterest: false
+      googlePlus  : false,
+      facebook    : false,
+      twitter     : false,
+      digg        : false,
+      delicious   : false,
+      stumbleupon : false,
+      linkedin    : false,
+      pinterest   : false
     },
-    shareTotal: 0,
-    template: '',
-    title: '',
-    url: document.location.href,
-    text: document.title,
-    urlCurl: 'sharrre.php',  //PHP script for google plus...
-    count: {}, //counter by social network
-    total: 0,  //total of sharing
-    shorterTotal: true, //show total by k or M when number is to big
-    enableHover: true, //disable if you want to personalize hover event with callback
-    enableCounter: true, //disable if you just want use buttons
-    enableTracking: false, //tracking with google analitycs
-    hover: function(){}, //personalize hover event with this callback function
-    hide: function(){}, //personalize hide event with this callback function
-    click: function(){}, //personalize click event with this callback function
-    render: function(){}, //personalize render event with this callback function
+    shareTotal     : 0,
+    template       : '',
+    title          : '',
+    url            : document.location.href,
+    text           : document.title,
+    urlCurl        : 'sharrre.php',  //PHP script for google plus...
+    count          : {}, //counter by social network
+    total          : 0,  //total of sharing
+    shorterTotal   : true, //show total by k or M when number is to big
+    enableHover    : true, //disable if you want to personalize hover event with callback
+    enableCounter  : true, //disable if you just want use buttons
+    enableTracking : false, //tracking with google analitycs
+    hover          : function(){}, //personalize hover event with this callback function
+    hide           : function(){}, //personalize hide event with this callback function
+    click          : function(){}, //personalize click event with this callback function
+    render         : function(){}, //personalize render event with this callback function
     buttons: {  //settings for buttons
       googlePlus : {  //http://www.google.com/webmasters/+1/button/
-        url: '',  //if you need to personnalize button url
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        size: 'medium',
-        lang: 'en-US',
-        annotation: ''
+        url        : '',  //if you need to personnalize button url
+        urlCount   : false,  //if you want to use personnalize button url on global counter
+        size       : 'medium',
+        lang       : 'en-US',
+        annotation : ''
       },
       facebook: { //http://developers.facebook.com/docs/reference/plugins/like/
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        action: 'like',
-        layout: 'button_count',
-        width: '',
-        send: 'false',
-        faces: 'false',
-        colorscheme: '',
-        font: '',
-        lang: 'en_US'
+        url         : '',  //if you need to personalize url button
+        urlCount    : false,  //if you want to use personnalize button url on global counter
+        action      : 'like',
+        layout      : 'button_count',
+        width       : '',
+        send        : 'false',
+        faces       : 'false',
+        colorscheme : '',
+        font        : '',
+        lang        : 'en_US'
       },
       twitter: {  //http://twitter.com/about/resources/tweetbutton
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        count: 'horizontal',
-        hashtags: '',
-        via: '',
-        related: '',
-        lang: 'en'
+        url      : '',  //if you need to personalize url button
+        urlCount : false,  //if you want to use personnalize button url on global counter
+        count    : 'horizontal',
+        hashtags : '',
+        via      : '',
+        related  : '',
+        lang     : 'en'
       },
       digg: { //http://about.digg.com/downloads/button/smart
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        type: 'DiggCompact'
+        url      : '',  //if you need to personalize url button
+        urlCount : false,  //if you want to use personnalize button url on global counter
+        type     : 'DiggCompact'
       },
       delicious: {
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        size: 'medium' //medium or tall
+        url      : '',  //if you need to personalize url button
+        urlCount : false,  //if you want to use personnalize button url on global counter
+        size     : 'medium' //medium or tall
       },
       stumbleupon: {  //http://www.stumbleupon.com/badges/
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        layout: '1'
+        url      : '',  //if you need to personalize url button
+        urlCount : false,  //if you want to use personnalize button url on global counter
+        layout   : '1'
       },
       linkedin: {  //http://developer.linkedin.com/plugins/share-button
-        url: '',  //if you need to personalize url button
-        urlCount: false,  //if you want to use personnalize button url on global counter
-        counter: ''
+        url      : '',  //if you need to personalize url button
+        urlCount : false,  //if you want to use personnalize button url on global counter
+        counter  : ''
       },
       pinterest: { //http://pinterest.com/about/goodies/
-        url: '',  //if you need to personalize url button
-        media: '',
-        description: '',
-        layout: 'horizontal'
+        url         : '',  //if you need to personalize url button
+        media       : '',
+        description : '',
+        layout      : 'horizontal'
       }
     }
   },
   /* Json URL to get count number
   ================================================== */
   urlJson = {
-    googlePlus: "",
-
-	//new FQL method by Sire
-	facebook: "https://graph.facebook.com/fql?q=SELECT%20url,%20normalized_url,%20share_count,%20like_count,%20comment_count,%20total_count,commentsbox_count,%20comments_fbid,%20click_count%20FROM%20link_stat%20WHERE%20url=%27{url}%27&callback=?",
-    //old method facebook: "http://graph.facebook.com/?id={url}&callback=?",
-    //facebook : "http://api.ak.facebook.com/restserver.php?v=1.0&method=links.getStats&urls={url}&format=json"
-    
-    twitter: "http://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
-    digg: "http://services.digg.com/2.0/story.getInfo?links={url}&type=javascript&callback=?",
-    delicious: 'http://feeds.delicious.com/v2/json/urlinfo/data?url={url}&callback=?',
-    //stumbleupon: "http://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}&format=jsonp&callback=?",
-    stumbleupon: "",
-    linkedin: "http://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
-    pinterest: ""
+     googlePlus            : "",
+     
+     //new FQL method by Sire
+     facebook              : "https://graph.facebook.com/fql?q=SELECT%20url,%20normalized_url,%20share_count,%20like_count,%20comment_count,%20total_count,commentsbox_count,%20comments_fbid,%20click_count%20FROM%20link_stat%20WHERE%20url=%27{url}%27&callback=?",
+     //old method facebook : "http://graph.facebook.com/?id={url}&callback=?",
+     //facebook            : "http://api.ak.facebook.com/restserver.php?v=1.0&method=links.getStats&urls={url}&format=json"
+     
+     twitter               : "http://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
+     digg                  : "http://services.digg.com/2.0/story.getInfo?links={url}&type=javascript&callback=?",
+     delicious             : 'http://feeds.delicious.com/v2/json/urlinfo/data?url={url}&callback=?',
+     //stumbleupon         : "http://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}&format=jsonp&callback=?",
+     stumbleupon           : "",
+     linkedin              : "http://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
+     pinterest             : ""
   },
   /* Load share buttons asynchronously
   ================================================== */
@@ -509,10 +509,10 @@
     }
     else{ //template by defaults
       $(this.element).html(
-                            '<div class="box"><a class="count" href="#">' + total + '</a>' + 
-                            (this.options.title !== '' ? '<a class="share" href="#">' + this.options.title + '</a>' : '') +
-                            '</div>'
-                          );
+          '<div class="box"><a class="count" href="#">' + total + '</a>' + 
+          (this.options.title !== '' ? '<a class="share" href="#">' + this.options.title + '</a>' : '') +
+          '</div>'
+        );
     }
   };
   
@@ -533,14 +533,14 @@
     popup[site](this.options);  //open
     if(this.options.enableTracking === true){ //tracking!
       var tracking = {
-        googlePlus: {site: 'Google', action: '+1'},
-        facebook: {site: 'facebook', action: 'like'},
-        twitter: {site: 'twitter', action: 'tweet'},
-        digg: {site: 'digg', action: 'add'},
-        delicious: {site: 'delicious', action: 'add'},
-        stumbleupon: {site: 'stumbleupon', action: 'add'},
-        linkedin: {site: 'linkedin', action: 'share'},
-        pinterest: {site: 'pinterest', action: 'pin'}
+        googlePlus  : {site: 'Google', action: '+1'},
+        facebook    : {site: 'facebook', action: 'like'},
+        twitter     : {site: 'twitter', action: 'tweet'},
+        digg        : {site: 'digg', action: 'add'},
+        delicious   : {site: 'delicious', action: 'add'},
+        stumbleupon : {site: 'stumbleupon', action: 'add'},
+        linkedin    : {site: 'linkedin', action: 'share'},
+        pinterest   : {site: 'pinterest', action: 'pin'}
       };
       _gaq.push(['_trackSocial', tracking[site].site, tracking[site].action]);
     }
