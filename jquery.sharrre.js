@@ -20,7 +20,8 @@
       delicious   : false,
       stumbleupon : false,
       linkedin    : false,
-      pinterest   : false
+      pinterest   : false,
+      buffer   : false
     },
     buttonsClass   : 'buttons',
     buttonClass    : 'button',
@@ -94,6 +95,13 @@
         media       : '',
         description : '',
         layout      : 'horizontal'
+      },
+      buffer: { //http://bufferapp.com/extras/button
+        url         : '',  //if you need to personalize url button
+        media       : '',
+        description : '',
+        layout      : 'horizontal', // vertical, horizontal, none
+        tweetText   : ''
       }
     }
   },
@@ -262,6 +270,16 @@
         li.src = '//assets.pinterest.com/js/pinit.js'; 
         var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(li, s);
       })();
+    },
+    buffer : function(self){
+      var sett = self.options.buttons.buffer;
+      $(self.element).find('.'+self.options.buttonsClass).append('<div class="'+self.options.buttonClass+' buffer"><a href="http://bufferapp.com/add" class="buffer-add-button" data-count="'+sett.layout+'" >Buffer</a></div>');
+
+      (function() {
+        var li = document.createElement('script');li.type = 'text/javascript';li.async = true;
+        li.src = '//static.bufferapp.com/js/button.js'; 
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(li, s);
+      })();
     }
   },
   /* Tracking for Google Analytics
@@ -315,6 +333,12 @@
     },
     pinterest: function(){
       //if somenone find a solution, mail me !
+    },
+    buffer: function(){
+      // @todo: Not sure if this will work or not
+      function bufferShare(){
+          _gaq.push(['_trackSocial', 'buffer', 'add']);
+      }
     }
   },
   /* Popup for each social network
@@ -343,6 +367,9 @@
     },
     pinterest: function(opt){
       window.open('http://pinterest.com/pin/create/button/?url='+encodeURIComponent((opt.buttons.pinterest.url !== '' ? opt.buttons.pinterest.url : opt.url))+'&media='+encodeURIComponent(opt.buttons.pinterest.media)+'&description='+opt.buttons.pinterest.description, 'pinterest', 'toolbar=no,width=700,height=300');
+    },
+    buffer: function(opt){
+      window.open('http://bufferapp.com/add?url='+encodeURIComponent((opt.buttons.buffer.url !== '' ? opt.buttons.buffer.url : opt.url))+'&text='+opt.buttons.buffer.tweetText+'&via=&picture=&count='+opt.buttons.buffer.layout+'&source=button', 'buffer', 'toolbar=no,width=700,height=300');
     }
   };
 
@@ -542,7 +569,8 @@
         delicious   : {site: 'delicious', action: 'add'},
         stumbleupon : {site: 'stumbleupon', action: 'add'},
         linkedin    : {site: 'linkedin', action: 'share'},
-        pinterest   : {site: 'pinterest', action: 'pin'}
+        pinterest   : {site: 'pinterest', action: 'pin'},
+        buffer      : {site: 'buffer', action: 'add'}
       };
       _gaq.push(['_trackSocial', tracking[site].site, tracking[site].action]);
     }
